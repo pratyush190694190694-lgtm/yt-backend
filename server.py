@@ -28,9 +28,11 @@ def extract():
     ydl_opts = {
         'format': 'bestaudio/best',
         'outtmpl': output_path,
-        'username': 'oauth2',      # Trigger the Smart TV login bypass
-        'quiet': False,            # Let Render print the Google verification code to logs
-        'no_warnings': False,      # Ensure the prompt isn't suppressed
+        'extractor_args': {
+            'youtube': ['client=ANDROID']  # Disguises the server as a mobile phone
+        },
+        'quiet': True,
+        'no_warnings': True,
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
